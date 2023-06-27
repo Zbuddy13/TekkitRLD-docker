@@ -42,9 +42,9 @@ fi
 #Sets Variables
 echo ""
 echo "Variables:"
-sed 's%JAVA_ARGS=""%JAVA_ARGS="'"$JAVA_ARGS"'"%' $VARPMT
-sed -i 's%JAVA_ARGS=""%JAVA_ARGS="'"$JAVA_ARGS"'"%' $VARPMT
+sed 's%-Xms1024M -Xmx4096M%'"$JAVA_ARGS"'%' $VARPMT
+sed -i 's%-Xms1024M -Xmx4096M%'"$JAVA_ARGS"'%' $VARPMT
 
 #Changes permissions and starts server
-chmod +x start.sh
-source start.sh
+chmod +x ServerStart.sh
+source ServerStart.sh
