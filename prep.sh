@@ -16,9 +16,6 @@ dl_modpack() {
 #Moves into data directory
 cd /data
 
-#creates eula.txt file to accept minecraft's EULA
-echo eula=true > eula.txt
-
 #checks if there is a current modpack installation
 if [ -f "$FILENAME" ]; then
     echo "Installation Exists"
@@ -38,6 +35,10 @@ else
     dl_modpack
     cp $VARPMT $VARTMP
 fi
+
+#creates eula.txt file to accept minecraft's EULA
+rm -rf eula.txt
+echo eula=true > eula.txt
 
 #Sets Variables
 echo ""

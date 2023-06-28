@@ -1,4 +1,4 @@
-FROM eclipse-temurin:18-jdk-alpine
+FROM eclipse-temurin:8-jdk-alpine
 
 #Sets up the workspace
 VOLUME ["/data"]
