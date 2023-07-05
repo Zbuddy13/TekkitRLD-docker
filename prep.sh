@@ -58,7 +58,7 @@ echo ""
 echo "Variables:"
 sed 's%-Xms1024M -Xmx4096M%'"$JAVA_ARGS"'%' $VARPMT
 sed -i 's%-Xms1024M -Xmx4096M%'"$JAVA_ARGS"'%' $VARPMT
-sed -i 's%enable-rcon=false%enable-rcon=true%'
+sed -i 's%enable-rcon=false%enable-rcon=true%' $PROPPMT
 echo rcon.password=$RCON_PASS>>$PROPPMT
 echo 'rcon.port=25575'>>$PROPPMT
 echo 'broadcast-rcon-to-ops=false'>>$PROPPMT
