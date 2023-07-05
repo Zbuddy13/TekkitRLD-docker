@@ -10,6 +10,9 @@ URL="https://www.curseforge.com/api/v1/mods/348969/files/2823160/download"
 #Function to download modpack
 dl_modpack() {
     curl -L $URL -o $FILENAME
+}
+
+unzip_modpack() {
     unzip $FILENAME
     mv "$FOLDERNM"/* .
     rm -rf "$FOLDERNM"
@@ -29,7 +32,7 @@ if [ -f "$FILENAME" ]; then
         cp $VARTMP $VARPMT
     else
         echo "Missing $VARTMP file: Unzipping modpack for replacement"
-        unzip $FILENAME
+        unzip_modpack
         cp $VARPMT $VARTMP
     fi
 
@@ -38,13 +41,14 @@ if [ -f "$FILENAME" ]; then
         cp $PROPTMP $PROPPMT
     else
         echo "Missing $PROPTMP file: Unzipping modpack for replacement"
-        unzip $FILENAME
+        unzip_modpack
         cp $PROPPMT $PROPTMP
     fi
 else
     
     #If there is no installation, it downloads the modpack and creates the installation
     dl_modpack
+    unzip_modpack
     cp $VARPMT $VARTMP
     cp $PROPPMT $PROPTMP
 fi
