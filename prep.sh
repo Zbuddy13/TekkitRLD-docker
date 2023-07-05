@@ -3,6 +3,8 @@ FILENAME=Tekkit1.2.zip
 FOLDERNM="Template"
 VARTMP="template.sh"
 VARPMT="ServerStart.sh"
+PROPTMP="server.properties.tmp"
+PROPPMT="server.properties"
 URL="https://www.curseforge.com/api/v1/mods/348969/files/2823160/download"
 
 #Function to download modpack
@@ -20,20 +22,32 @@ cd /data
 if [ -f "$FILENAME" ]; then
     echo "Installation Exists"
     rm -rf $VARPMT
+    rm -rf $PROPPMT
 
     #Ensures there is a valid variable template file
     if [ -f "$VARTMP" ]; then
         cp $VARTMP $VARPMT
     else
-        echo "Missing $VARPMT file: Downloading modpack for replacement"
-        dl_modpack
+        echo "Missing $VARPMT file: Unzipping modpack for replacement"
+        unzip $FILENAME
         cp $VARPMT $VARTMP
+        cp $PROPPMT $VARPMT
+    fi
+
+    #Ensures there is a valid server.properties file
+    if [ -f "$PROPTMP" ]; then
+        cp $PROPTMP $PROPPMT
+    else
+        echo "Missing $PROPPMT file: Unzipping modpack for replacement"
+        unzip $FILENAME
+        cp $PROPPMT $VARTMP
     fi
 else
     
     #If there is no installation, it downloads the modpack and creates the installation
     dl_modpack
     cp $VARPMT $VARTMP
+    cp $PROPPMT $PROPTMP
 fi
 
 #creates eula.txt file to accept minecraft's EULA
@@ -45,6 +59,10 @@ echo ""
 echo "Variables:"
 sed 's%-Xms1024M -Xmx4096M%'"$JAVA_ARGS"'%' $VARPMT
 sed -i 's%-Xms1024M -Xmx4096M%'"$JAVA_ARGS"'%' $VARPMT
+sed -i 's%enable-rcon=false%enable-rcon=true%'
+echo rcon.password=$RCON_PASS>>$PROPPMT
+echo 'rcon.port=25575'>>$PROPPMT
+echo 'broadcast-rcon-to-ops=false'>>$PROPPMT
 
 #Changes permissions and starts server
 chmod +x ServerStart.sh
