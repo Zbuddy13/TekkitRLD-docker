@@ -28,19 +28,18 @@ if [ -f "$FILENAME" ]; then
     if [ -f "$VARTMP" ]; then
         cp $VARTMP $VARPMT
     else
-        echo "Missing $VARPMT file: Unzipping modpack for replacement"
+        echo "Missing $VARTMP file: Unzipping modpack for replacement"
         unzip $FILENAME
         cp $VARPMT $VARTMP
-        cp $PROPPMT $VARPMT
     fi
 
-    #Ensures there is a valid server.properties file
+    #Ensures there is a valid server.properties template file
     if [ -f "$PROPTMP" ]; then
         cp $PROPTMP $PROPPMT
     else
-        echo "Missing $PROPPMT file: Unzipping modpack for replacement"
+        echo "Missing $PROPTMP file: Unzipping modpack for replacement"
         unzip $FILENAME
-        cp $PROPPMT $VARTMP
+        cp $PROPPMT $PROPTMP
     fi
 else
     
