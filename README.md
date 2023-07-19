@@ -23,5 +23,11 @@ To change these arguments and add more, add the following environment variable t
 ```
 -e JAVA_ARGS="New Java Arguments"
 ```
-
 Memory arguments can be set to either megabytes or gigabytes with ```-Xms4096m``` as Megabytes and ```-Xms4G``` as Gigabytes
+
+RCON can be enabled as well by setting the following two arguments
+```
+-p <port>:25575 -e RCON_PASS="password"
+```
+
+The default password is ```changeme``` if it isn't changed in the argument
