@@ -1,5 +1,9 @@
 FROM eclipse-temurin:8-jdk-alpine
 
+# Adding Labels to identify repository for github
+LABEL org.opencontainers.image.source=https://github.com/moyito2604/TekkitRLD-docker
+LABEL org.opencontainers.image.description="TekkitRLD-docker"
+
 #Sets up the workspace
 VOLUME ["/data"]
 WORKDIR /

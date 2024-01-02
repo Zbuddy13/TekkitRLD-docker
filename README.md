@@ -14,7 +14,7 @@ docker run -p <port>:25565 -v '/path/to/files':'/data':'rw' imagename
 
 A prebuilt container can be made and run using the following command
 ```
-docker run -p <port>:25565 -v '/path/to/files':'/data':'rw' moyito2604/tekkitrld-docker:latest
+docker run -p <port>:25565 -v '/path/to/files':'/data':'rw' ghcr.io/moyito2604/tekkitrld-docker:latest
 ```
 
 Default Java Arguments are set with minimum memory requirements of ```-Xms1024m -Xmx4096m```
