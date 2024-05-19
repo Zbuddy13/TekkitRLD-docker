@@ -39,12 +39,12 @@ An example compose is ->
 services:
     tekkitrdl:
         ports:
-            - 2334:25565
-            - <port>:25575
+            - 25565:25565
+            - 25575:25575
         environment:
             - JAVA_ARGS=-Xmx4096m
-            - RCON_PASS=default
+            - RCON_PASS=defaultpass
         volumes:
-            - /appdata/tekkitrdl:/data:rw
+            - /mnt/appdata/tekkitrdl:/data:rw
         image: zbuddy19/tekkitrdl:1.0
 ```
