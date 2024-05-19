@@ -23,5 +23,5 @@ jobs:
               with:
                 context: .
                 push: true
-                tags: ${{ secrets.DOCKERUSER }}/TekkitRLD-docker:1.0
+                tags: ${{ secrets.DOCKERUSER }}/tekkitrdl:1.0
                 
