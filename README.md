@@ -33,3 +33,18 @@ RCON can be enabled as well by setting the following two arguments
 ```
 
 The default password is ```changeme``` if it isn't changed in the argument
+
+An example compose is ->
+```
+services:
+    tekkitrdl:
+        ports:
+            - 2334:25565
+            - <port>:25575
+        environment:
+            - JAVA_ARGS=-Xmx4096m
+            - RCON_PASS=default
+        volumes:
+            - /appdata/tekkitrdl:/data:rw
+        image: zbuddy19/tekkitrdl:1.0
+```
